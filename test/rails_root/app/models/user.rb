@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_one :address, :as => :addressable, :dependent => :destroy
 
+  belongs_to :atlantis
+
   named_scope :old,      :conditions => "age > 50"
   named_scope :eighteen, :conditions => { :age => 18 }
   named_scope :recent,   lambda {|count| { :limit => count } }
