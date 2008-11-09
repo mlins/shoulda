@@ -3,9 +3,11 @@ class User < ActiveRecord::Base
   has_many :dogs, :foreign_key => :owner_id
 
   has_many :friendships
+  has_one :friendship, :dependent => :destroy
   has_many :friends, :through => :friendships
   has_many :addresses, :as => :addressable
   has_many :enemies, :through => :friendships
+  has_one :flea
 
   has_one :address, :as => :addressable, :dependent => :destroy
 
