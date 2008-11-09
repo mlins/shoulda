@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
-  has_many :posts
+  has_many :posts, :dependent => :destroy
   has_many :dogs, :foreign_key => :owner_id
 
   has_many :friendships
   has_many :friends, :through => :friendships
+  has_many :addresses, :as => :addressable
+  has_many :enemies, :through => :friendships
 
   has_one :address, :as => :addressable, :dependent => :destroy
 
