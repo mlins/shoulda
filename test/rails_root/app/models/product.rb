@@ -9,4 +9,6 @@ class Product < ActiveRecord::Base
   validates_inclusion_of :weight, :in => 1..100,  :if => :tangible
   validates_format_of :size, :with => /.+x.+x.+/, :if => :tangible
   validates_length_of :size, :in => 5..20,        :if => :tangible
+
+  has_and_belongs_to_many :stores
 end
